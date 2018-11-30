@@ -10,11 +10,11 @@ import Component from "vue-class-component";
 
 @Component
 export default class App extends Vue {
-  public message: string = "STATE_11";
+  public message: string = "STATE-1";
 
   public created(): void {
     setTimeout(() => {
-      this.message = "STATE_22";
+      this.message = "STATE-2";
     }, 5000);
   }
 }
