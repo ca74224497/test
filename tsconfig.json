@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "strict": true,
+    // Target latest version of ECMAScript.
+    "target": "es5",
+    // Specify module code generation.
+    "module": "es2015",
+    // Do not emit outputs if any errors were reported.
+    "noEmitOnError": true,
+    // Skip type checking of all declaration files.
+    "skipLibCheck": true,
+    // Redirect output structure to the directory.
+    "outDir": "./assets/js/",
+    // Generates corresponding .map file.
+    "sourceMap": true,
+    // Enables experimental support for ES decorators.
+    "experimentalDecorators": true,
+    // Emit design-type metadata for decorated declarations in source.
+    "emitDecoratorMetadata": true,
+    // List of library files to be included in the compilation.
+    "lib": ["es5", "es2016", "dom"],
+    // Search under node_modules for non-relative imports.
+    "moduleResolution": "node"
+    // Enable JSX.
+    //"jsx": "react"
+    // Set JSX factory.
+    //"jsxFactory": "h"
+    // Allow default imports from modules with no default export.
+    //"allowSyntheticDefaultImports": true
+    // Process & infer types from .js files.
+    //"allowJs": true,
+    // Don't emit; allow Babel to transform files.
+    //"noEmit": true,
+    // Disallow features that require cross-file information for emit.
+    //"isolatedModules": true,
+    // Import non-ES modules as default imports.
+    //"esModuleInterop": true,
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
