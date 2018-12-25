@@ -1,0 +1,36 @@
+.controls, .task-list {
+  padding: 20px;
+}
+
+.task-list th:nth-child(1) {
+  width: 100px;
+}
+
+.task-list th:nth-child(2),
+.task-list th:nth-child(3) {
+  width: 250px;
+}
+
+.task-list th:nth-child(5) {
+  width: 120px;
+}
+
+.task-list .data tr.s1 {
+  background: lightgreen;
+}
+
+.task-list .data tr a:not(.admin) {
+  display: none;
+}
+
+.modal-body > .alert {
+  display: none;
+}
+
+#auth {
+  padding-left: 30px;
+}
+
+#auth.admin {
+  display: none;
+}

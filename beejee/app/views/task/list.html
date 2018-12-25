@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/datatables.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Тестовое задание для &laquo;BeeJee&raquo;</title>
+  </head>
+  <body>
+    <!--MAIN CONTENT-->
+    <script>
+      var tasks, setClass;
+      try {
+        tasks    = %data%;
+        setClass = "%class%";
+      } catch (e) {
+        tasks    = [];
+        setClass = ""
+      }
+    </script>
+    <div class="controls">
+      <button type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#add-task">Добавить задачу
+      </button>
+      <a href="#"
+         data-toggle="modal"
+         data-target="#user-login"
+         id="auth" class="%class%">Авторизация</a>
+    </div>
+    <div class="task-list table-striped">
+      <table class="data">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Имя пользователя</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Текст задачи</th>
+            <th scope="col">Статус</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="modal fade" id="add-task" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/task/add/" method="post" class="add-task-form" novalidate>
+            <div class="modal-header">
+              <h5 class="modal-title">Добавление задачи</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert"></div>
+              <div class="form-group">
+                <label for="user">Имя пользователя</label>
+                <input type="text" class="form-control" id="user" name="user" placeholder="" required />
+                <div class="invalid-feedback">
+                  Пожалуйста, введите имя пользователя!
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  </div>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="" required />
+                </div>
+                <div class="invalid-feedback">
+                  Пожалуйста, введите e-mail!
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="task">Текст задачи</label>
+                <textarea class="form-control" id="task" name="task" rows="4" required></textarea>
+                <div class="invalid-feedback">
+                  Пожалуйста, введите текст задачи!
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+              <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="edit-task" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/task/edit/" method="post" class="edit-task-form" novalidate>
+            <div class="modal-header">
+              <h5 class="modal-title">Редактирование задачи</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert"></div>
+              <div class="form-group">
+                <label for="e-task">Текст задачи</label>
+                <textarea id="e-task" name="e-task" class="form-control" rows="4" required></textarea>
+                <div class="invalid-feedback">
+                  Пожалуйста, введите текст задачи!
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="e-status">Статус</label>
+                <select id="e-status" name="e-status" size="1">
+                  <option value="1">Выполнена</option>
+                  <option value="0">Не выполнена</option>
+                </select>
+                <input type="hidden" name="e-id" id="e-id" value="" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+              <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="user-login" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/user/login/" method="post" class="user-login-form" novalidate>
+            <div class="modal-header">
+              <h5 class="modal-title">Авторизация</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert"></div>
+              <div class="form-group">
+                <label for="login">Логин</label>
+                <input type="text" class="form-control" id="login" name="login" placeholder="" required />
+                <div class="invalid-feedback">
+                  Пожалуйста, введите логин!
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="login">Пароль</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="" required />
+                <div class="invalid-feedback">
+                  Пожалуйста, введите пароль!
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+              <button type="submit" class="btn btn-success">Войти</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--MAIN CONTENT END-->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/datatables.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
